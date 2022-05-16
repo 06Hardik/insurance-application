@@ -1,0 +1,117 @@
+<div style="margin: 16px; align-items: center;">
+  <h1 style="text-align: center;">Seach Policy Details</h1>
+  <div style="width: 37%;margin: auto;margin-top: 36px;">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+        <mat-label>Search Policy</mat-label>
+        <input *ngIf="isPolicy" matInput type="number" placeholder="Seach By Policy Id" [(ngModel)]="searchId" name="policyId">
+        <input *ngIf="!isPolicy" matInput type="number" placeholder="Seach By Customer Id" [(ngModel)]="searchId" name="customerId">
+        </mat-form-field>
+        <div style="display: flex; flex-direction:row;">
+            <div>
+                <label>Seach By: </label>
+                <mat-radio-group class="example-radio-group" [(ngModel)]="searchType" name = "searchType" (change)="setIsPolicy()">
+                <mat-radio-button class="example-radio-button" value="Policy">Policy Id</mat-radio-button>
+                <mat-radio-button class="example-radio-button" value="Customer">Customer Id</mat-radio-button>
+                </mat-radio-group>
+            </div>
+            <button class="custom-search-css" mat-raised-button color="primary" (click)="seachPolicy()">Search</button>
+        </div>
+    </form>
+  </div>
+</div>
+
+<div class="customer-details" *ngIf="customerDataSource.length > 0">
+    <h3>Customer Details:</h3>
+    <table mat-table [dataSource]="customerDataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="CustId">
+          <th mat-header-cell *matHeaderCellDef> Customer Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.CustId}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Income_Group">
+          <th mat-header-cell *matHeaderCellDef> Income Group </th>
+          <td mat-cell *matCellDef="let element"> {{element.Income_Group}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Marital_status">
+          <th mat-header-cell *matHeaderCellDef> Marital Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.Marital_status}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Region">
+        <th mat-header-cell *matHeaderCellDef> Region </th>
+        <td mat-cell *matCellDef="let element"> {{element.Region}} </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="customerDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: customerDisplayedColumns;"></tr>
+    </table>
+</div>
+
+<div class="policy-details" *ngIf="policyDataSource.length > 0">
+    <h3>Customer Policy Details: </h3>
+    <table mat-table [dataSource]="policyDataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="PolicyId">
+          <th mat-header-cell *matHeaderCellDef> Policy Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.PolicyId}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Purchase_date">
+          <th mat-header-cell *matHeaderCellDef> Date of Purchase </th>
+          <td mat-cell *matCellDef="let element"> {{element.Purchase_date}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Premium">
+          <th mat-header-cell *matHeaderCellDef> Premium </th>
+          <td mat-cell *matCellDef="let element"> {{element.Premium}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Fuel">
+          <th mat-header-cell *matHeaderCellDef> Fuel </th>
+          <td mat-cell *matCellDef="let element"> {{element.Fuel}} </td>
+        </ng-container>
+
+          <ng-container matColumnDef="VEHICLE_SEGMENT">
+            <th mat-header-cell *matHeaderCellDef> VEHICLE SEGMENT </th>
+            <td mat-cell *matCellDef="let element"> {{element.VEHICLE_SEGMENT}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Bodily_Injury_Liability">
+            <th mat-header-cell *matHeaderCellDef> Bodily Injury Liability </th>
+            <td mat-cell *matCellDef="let element"> {{element.Bodily_Injury_Liability}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Collision">
+            <th mat-header-cell *matHeaderCellDef> Collision </th>
+            <td mat-cell *matCellDef="let element"> {{element.Collision}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Comprehensive">
+            <th mat-header-cell *matHeaderCellDef> Comprehensive </th>
+            <td mat-cell *matCellDef="let element"> {{element.Comprehensive}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Personal_Injury_Protection">
+            <th mat-header-cell *matHeaderCellDef> Personal Injury Protection </th>
+            <td mat-cell *matCellDef="let element"> {{element.Personal_Injury_Protection}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Property_Damage_Liability">
+            <th mat-header-cell *matHeaderCellDef> Property Damage Liability </th>
+            <td mat-cell *matCellDef="let element"> {{element.Property_Damage_Liability}} </td>
+          </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="policyDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: policyDisplayedColumns;"></tr>
+      </table>
+      
+      
+</div>

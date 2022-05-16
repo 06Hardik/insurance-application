@@ -1,0 +1,17 @@
+<h1 style="text-align: center; margin-top: 32px;">Policy Purchase Per Month Analysis</h1>
+<div style="align-items: center;">
+<form class="example-form">
+    <mat-form-field appearance="fill">
+        <mat-label>Select Region</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="regionChange()">
+          <mat-option value="North">North</mat-option>
+          <mat-option value="South">South</mat-option>
+          <mat-option value="East">East</mat-option>
+          <mat-option value="West">West</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+<div class="divChart">
+<canvas id="myChart" width="400" height="400"></canvas>
+</div>
+</div>
