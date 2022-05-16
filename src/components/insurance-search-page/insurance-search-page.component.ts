@@ -1,5 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { OpenPolicyFormService } from 'src/services/open-policy-form.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-insurance-search-page',
@@ -9,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class InsuranceSearchPageComponent implements OnInit {
 
   customerDisplayedColumns: string[] = ['CustId', 'Gender', 'Income_Group', 'Marital_status', 'Region'];
-  policyDisplayedColumns: string[] = ['PolicyId', 'Purchase_date', 'Premium', 'Fuel', 'VEHICLE_SEGMENT', 'Bodily_Injury_Liability', 'Collision', 'Comprehensive', 'Personal_Injury_Protection', 'Property_Damage_Liability'];
+  policyDisplayedColumns: string[] = ['PolicyId', 'Purchase_date', 'Premium', 'Fuel', 'VEHICLE_SEGMENT', 'Bodily_Injury_Liability', 'Collision', 'Comprehensive', 'Personal_Injury_Protection', 'Property_Damage_Liability', 'actions'];
   policyDataSource: PolicyDetails[] = [];
   customerDataSource: CustomerDetails[] = [];
   isPolicy: boolean = true;
@@ -17,7 +19,7 @@ export class InsuranceSearchPageComponent implements OnInit {
   searchId=null;
   
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private openEditFormService: OpenPolicyFormService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -32,6 +34,11 @@ export class InsuranceSearchPageComponent implements OnInit {
     else {
       this.isPolicy = false;
     }
+  }
+
+  openEditForm(row:any) {
+    this.openEditFormService.setObject(row);
+    this.router.navigate(["insurance-policy-form" + "/" + row.PolicyId]);
   }
 
   seachPolicy() {

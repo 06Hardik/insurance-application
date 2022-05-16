@@ -44,6 +44,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { InsuranceChartsComponent } from './components/insurance-charts/insurance-charts.component';
+import { InsurancePolicyFormComponent } from './components/insurance-policy-form/insurance-policy-form.component';
+import { SaveSnackbarComponent } from './components/save-snackbar/save-snackbar.component';
 
 @NgModule({
   exports: [

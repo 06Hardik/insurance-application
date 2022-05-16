@@ -10,12 +10,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from 'src/material.module';
 import { InsuranceChartsComponent } from 'src/components/insurance-charts/insurance-charts.component';
+import { InsurancePolicyFormComponent } from 'src/components/insurance-policy-form/insurance-policy-form.component';
+import { OpenPolicyFormService } from 'src/services/open-policy-form.service';
+import { SaveSnackbarComponent } from 'src/components/save-snackbar/save-snackbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InsuranceSearchPageComponent,
-    InsuranceChartsComponent
+    InsuranceChartsComponent,
+    InsurancePolicyFormComponent,
+    SaveSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +32,7 @@ import { InsuranceChartsComponent } from 'src/components/insurance-charts/insura
     MaterialExampleModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [OpenPolicyFormService],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
